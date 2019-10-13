@@ -1,0 +1,6 @@
+[webservers]
+ansible1 ansible_user=mhopper
+ansible2 ansible_user=mhopper
+[hosts]
+livingroom
+

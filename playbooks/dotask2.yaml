@@ -1,0 +1,23 @@
+---
+- hosts: home
+  gather_facts: yes
+  tasks:
+      - name: access log directories on logger
+        command:   
+        become: no
+      - name: tar the logs
+        command: 
+      - name: rsync the log directories
+        command:  
+        become: no
+
+
+      - name: run uname
+        command: uname -a > uname.txt  
+        become: no
+      - name: copy result
+        command: scp uname.txt mhopper@mattcent:/home/mhopper/Desktop/
+      - name: ssh to Matt Cent
+        command: ssh mhopper@mattcent ; echo </home/mhopper/Desktop/uname.txt 
+        become: no
+

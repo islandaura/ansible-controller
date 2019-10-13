@@ -1,0 +1,18 @@
+---
+#Install Oneko
+- name: install oneko
+  hosts: ansible1 
+  user: mhopper
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: install oneko
+    yum: name=oneko
+  - name: create readme on Desktop
+    copy:
+      content: "README_ONEKO"
+      dest: /home/mhopper/Desktop/ONEKO
+      force: yes
+      mode: 0644
+...

@@ -1,0 +1,17 @@
+---
+- name: prep for OS
+  hosts: ansible1 
+  tasks:
+  - name: disable Network Manager
+    service:
+      name: NetworkManager
+      enabled: false
+      state: stopped
+  - name: edit file
+    lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX='
+      line: 'GRUB_CMDLINE_LINUX="crashkernel-auto rhgb quiet net.ifnames=0"'
+  - name: rewrite grub
+    command: grub2-mkconfig -o /boot/grub2/grub.cfg
+...
